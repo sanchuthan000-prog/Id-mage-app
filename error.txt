@@ -1,0 +1,252 @@
+=== SEARCHING FOR APKS ===
+=== LAST 250 LINES OF DEBUG LOG ===
+ - 'DateTime' is from 'dart:core'.
+          purchaseDate: _purchaseDate,
+                        ^
+lib/screens/ids/add_edit_id_screen.dart:417:28: Error: Too many positional arguments: 1 allowed, but 2 found.
+Try removing the extra positional arguments.
+        await prov.updateId(updated, _imagePaths);
+                           ^
+lib/screens/ids/add_edit_id_screen.dart:429:22: Error: The getter 'AppHelpers' isn't defined for the class '_AddEditIdScreenState'.
+ - '_AddEditIdScreenState' is from 'package:ff_id_manager/screens/ids/add_edit_id_screen.dart' ('lib/screens/ids/add_edit_id_screen.dart').
+Try correcting the name to the name of an existing getter, or defining a getter or field named 'AppHelpers'.
+          createdAt: AppHelpers.nowColombo(),
+                     ^^^^^^^^^^
+lib/screens/ids/add_edit_id_screen.dart:430:22: Error: The getter 'AppHelpers' isn't defined for the class '_AddEditIdScreenState'.
+ - '_AddEditIdScreenState' is from 'package:ff_id_manager/screens/ids/add_edit_id_screen.dart' ('lib/screens/ids/add_edit_id_screen.dart').
+Try correcting the name to the name of an existing getter, or defining a getter or field named 'AppHelpers'.
+          updatedAt: AppHelpers.nowColombo(),
+                     ^^^^^^^^^^
+lib/screens/ids/add_edit_id_screen.dart:426:25: Error: The argument type 'DateTime' can't be assigned to the parameter type 'String'.
+ - 'DateTime' is from 'dart:core'.
+          purchaseDate: _purchaseDate,
+                        ^
+lib/screens/ids/add_edit_id_screen.dart:432:25: Error: Too many positional arguments: 1 allowed, but 2 found.
+Try removing the extra positional arguments.
+        await prov.addId(newId, _imagePaths);
+                        ^
+lib/screens/ids/id_detail_screen.dart:149:17: Error: No named parameter with the name 'label'.
+                label: '🛒 Sell This ID',
+                ^^^^^
+lib/widgets/common_widgets.dart:603:9: Context: Found this candidate, but the arguments don't match.
+  const PrimaryButton({
+        ^^^^^^^^^^^^^
+lib/screens/ids/id_detail_screen.dart:54:66: Error: The method 'getIdById' isn't defined for the class 'FfIdProvider'.
+ - 'FfIdProvider' is from 'package:ff_id_manager/providers/ff_id_provider.dart' ('lib/providers/ff_id_provider.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'getIdById'.
+              final updated = await context.read<FfIdProvider>().getIdById(_ffId.id!);
+                                                                 ^^^^^^^^^
+lib/screens/ids/id_detail_screen.dart:60:30: Error: The getter 'AppHelpers' isn't defined for the class '_IdDetailScreenState'.
+ - '_IdDetailScreenState' is from 'package:ff_id_manager/screens/ids/id_detail_screen.dart' ('lib/screens/ids/id_detail_screen.dart').
+Try correcting the name to the name of an existing getter, or defining a getter or field named 'AppHelpers'.
+            onPressed: () => AppHelpers.confirmDelete(context, 'ID: ${_ffId.uid}', () async {
+                             ^^^^^^^^^^
+lib/screens/ids/id_detail_screen.dart:62:49: Error: The method 'loadStats' isn't defined for the class 'DashboardProvider'.
+ - 'DashboardProvider' is from 'package:ff_id_manager/providers/dashboard_provider.dart' ('lib/providers/dashboard_provider.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'loadStats'.
+              context.read<DashboardProvider>().loadStats();
+                                                ^^^^^^^^^
+lib/screens/ids/id_detail_screen.dart:106:45: Error: The argument type 'String?' can't be assigned to the parameter type 'String' because 'String?' is nullable and 'String' isn't.
+              _infoRow('Login Email', _ffId.loginEmail, copyable: true, icon: Icons.email_rounded),
+                                            ^
+lib/screens/ids/id_detail_screen.dart:117:62: Error: The argument type 'double?' can't be assigned to the parameter type 'double' because 'double?' is nullable and 'double' isn't.
+              _infoRow('Selling Price', formatCurrency(_ffId.sellingPrice),
+                                                             ^
+lib/screens/ids/id_detail_screen.dart:175:48: Error: The getter 'imagePath' isn't defined for the class 'String'.
+Try correcting the name to the name of an existing getter, or defining a getter or field named 'imagePath'.
+          final imgFile = File(_ffId.images[i].imagePath);
+                                               ^^^^^^^^^
+lib/screens/ids/id_detail_screen.dart:177:62: Error: The getter 'imagePath' isn't defined for the class 'String'.
+Try correcting the name to the name of an existing getter, or defining a getter or field named 'imagePath'.
+            onTap: () => _viewImage(context, _ffId.images[i].imagePath),
+                                                             ^^^^^^^^^
+lib/screens/ids/id_detail_screen.dart:330:29: Error: The argument type 'String?' can't be assigned to the parameter type 'String' because 'String?' is nullable and 'String' isn't.
+                  _showPass ? _ffId.loginPasswordEncrypted : '••••••••',
+                            ^
+lib/screens/ids/id_detail_screen.dart:346:59: Error: The argument type 'String?' can't be assigned to the parameter type 'String' because 'String?' is nullable and 'String' isn't.
+              Clipboard.setData(ClipboardData(text: _ffId.loginPasswordEncrypted));
+                                                          ^
+lib/screens/sales/make_sale_screen.dart:31:24: Error: Undefined name 'AppHelpers'.
+  DateTime _saleDate = AppHelpers.nowColombo();
+                       ^^^^^^^^^^
+lib/screens/sales/make_sale_screen.dart:154:37: Error: Member not found: 'paymentMethods'.
+                items: AppConstants.paymentMethods.map((m) => DropdownMenuItem(
+                                    ^^^^^^^^^^^^^^
+lib/screens/sales/make_sale_screen.dart:212:17: Error: No named parameter with the name 'label'.
+                label: '✅ Confirm Sale',
+                ^^^^^
+lib/widgets/common_widgets.dart:603:9: Context: Found this candidate, but the arguments don't match.
+  const PrimaryButton({
+        ^^^^^^^^^^^^^
+lib/screens/sales/make_sale_screen.dart:98:60: Error: The argument type 'double?' can't be assigned to the parameter type 'double' because 'double?' is nullable and 'double' isn't.
+                          Text('Price: ${formatCurrency(id.sellingPrice)}',
+                                                           ^
+lib/screens/sales/make_sale_screen.dart:342:9: Error: No named parameter with the name 'profit'.
+        profit: _profit,
+        ^^^^^^
+lib/screens/sales/make_sale_screen.dart:349:41: Error: The method 'loadStats' isn't defined for the class 'DashboardProvider'.
+ - 'DashboardProvider' is from 'package:ff_id_manager/providers/dashboard_provider.dart' ('lib/providers/dashboard_provider.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'loadStats'.
+      context.read<DashboardProvider>().loadStats();
+                                        ^^^^^^^^^
+lib/screens/sellers/sellers_screen.dart:71:84: Error: Method 'contains' cannot be called on 'String?' because it is potentially null.
+Try calling using ?. instead.
+                    .where((s) => s.name.toLowerCase().contains(_query) || s.phone.contains(_query))
+                                                                                   ^^^^^^^^
+lib/screens/sellers/sellers_screen.dart:131:36: Error: Property 'isNotEmpty' cannot be accessed on 'String?' because it is potentially null.
+Try accessing using ?. instead.
+                  if (seller.phone.isNotEmpty)
+                                   ^^^^^^^^^^
+lib/screens/sellers/sellers_screen.dart:132:33: Error: The argument type 'String?' can't be assigned to the parameter type 'String' because 'String?' is nullable and 'String' isn't.
+                    Text(seller.phone, style: GoogleFonts.rajdhani(color: AppColors.textGrey, fontSize: 12)),
+                                ^
+lib/screens/sellers/sellers_screen.dart:186:27: Error: A value of type 'String?' can't be assigned to a variable of type 'String' because 'String?' is nullable and 'String' isn't.
+      _phoneCtrl.text = s.phone;
+                          ^
+lib/screens/sellers/sellers_screen.dart:231:29: Error: No named parameter with the name 'label'.
+              PrimaryButton(label: isEdit ? 'Update Seller' : 'Add Seller',
+                            ^^^^^
+lib/widgets/common_widgets.dart:603:9: Context: Found this candidate, but the arguments don't match.
+  const PrimaryButton({
+        ^^^^^^^^^^^^^
+lib/screens/sellers/sellers_screen.dart:332:22: Error: The getter 'AppHelpers' isn't defined for the class '_AddEditSellerScreenState'.
+ - '_AddEditSellerScreenState' is from 'package:ff_id_manager/screens/sellers/sellers_screen.dart' ('lib/screens/sellers/sellers_screen.dart').
+Try correcting the name to the name of an existing getter, or defining a getter or field named 'AppHelpers'.
+          createdAt: AppHelpers.nowColombo(),
+                     ^^^^^^^^^^
+lib/screens/sellers/sellers_screen.dart:370:28: Error: Property 'isNotEmpty' cannot be accessed on 'String?' because it is potentially null.
+Try accessing using ?. instead.
+          if (seller.phone.isNotEmpty)
+                           ^^^^^^^^^^
+lib/screens/sellers/sellers_screen.dart:373:32: Error: The getter 'AppHelpers' isn't defined for the class 'SellerProfileScreen'.
+ - 'SellerProfileScreen' is from 'package:ff_id_manager/screens/sellers/sellers_screen.dart' ('lib/screens/sellers/sellers_screen.dart').
+Try correcting the name to the name of an existing getter, or defining a getter or field named 'AppHelpers'.
+              onPressed: () => AppHelpers.openWhatsApp(seller.whatsapp ?? seller.phone, ''),
+                               ^^^^^^^^^^
+lib/screens/sellers/sellers_screen.dart:389:36: Error: Property 'isNotEmpty' cannot be accessed on 'String?' because it is potentially null.
+Try accessing using ?. instead.
+                  if (seller.phone.isNotEmpty)
+                                   ^^^^^^^^^^
+lib/screens/sellers/sellers_screen.dart:390:33: Error: The argument type 'String?' can't be assigned to the parameter type 'String' because 'String?' is nullable and 'String' isn't.
+                    Text(seller.phone, style: GoogleFonts.rajdhani(color: AppColors.textGrey, fontSize: 14)),
+                                ^
+lib/screens/buyers/buyers_screen.dart:71:84: Error: Method 'contains' cannot be called on 'String?' because it is potentially null.
+Try calling using ?. instead.
+                    .where((b) => b.name.toLowerCase().contains(_query) || b.phone.contains(_query))
+                                                                                   ^^^^^^^^
+lib/screens/buyers/buyers_screen.dart:131:35: Error: Property 'isNotEmpty' cannot be accessed on 'String?' because it is potentially null.
+Try accessing using ?. instead.
+                  if (buyer.phone.isNotEmpty)
+                                  ^^^^^^^^^^
+lib/screens/buyers/buyers_screen.dart:132:32: Error: The argument type 'String?' can't be assigned to the parameter type 'String' because 'String?' is nullable and 'String' isn't.
+                    Text(buyer.phone, style: GoogleFonts.rajdhani(color: AppColors.textGrey, fontSize: 12)),
+                               ^
+lib/screens/buyers/buyers_screen.dart:186:27: Error: A value of type 'String?' can't be assigned to a variable of type 'String' because 'String?' is nullable and 'String' isn't.
+      _phoneCtrl.text = b.phone;
+                          ^
+lib/screens/buyers/buyers_screen.dart:231:29: Error: No named parameter with the name 'label'.
+              PrimaryButton(label: isEdit ? 'Update Buyer' : 'Add Buyer',
+                            ^^^^^
+lib/widgets/common_widgets.dart:603:9: Context: Found this candidate, but the arguments don't match.
+  const PrimaryButton({
+        ^^^^^^^^^^^^^
+lib/screens/buyers/buyers_screen.dart:322:36: Error: The getter 'AppHelpers' isn't defined for the class '_AddEditBuyerScreenState'.
+ - '_AddEditBuyerScreenState' is from 'package:ff_id_manager/screens/buyers/buyers_screen.dart' ('lib/screens/buyers/buyers_screen.dart').
+Try correcting the name to the name of an existing getter, or defining a getter or field named 'AppHelpers'.
+          totalPaid: 0, createdAt: AppHelpers.nowColombo(),
+                                   ^^^^^^^^^^
+lib/screens/buyers/buyers_screen.dart:360:27: Error: Property 'isNotEmpty' cannot be accessed on 'String?' because it is potentially null.
+Try accessing using ?. instead.
+          if (buyer.phone.isNotEmpty)
+                          ^^^^^^^^^^
+lib/screens/buyers/buyers_screen.dart:363:32: Error: The getter 'AppHelpers' isn't defined for the class 'BuyerProfileScreen'.
+ - 'BuyerProfileScreen' is from 'package:ff_id_manager/screens/buyers/buyers_screen.dart' ('lib/screens/buyers/buyers_screen.dart').
+Try correcting the name to the name of an existing getter, or defining a getter or field named 'AppHelpers'.
+              onPressed: () => AppHelpers.openWhatsApp(buyer.whatsapp ?? buyer.phone, ''),
+                               ^^^^^^^^^^
+lib/screens/buyers/buyers_screen.dart:377:33: Error: Property 'isNotEmpty' cannot be accessed on 'String?' because it is potentially null.
+Try accessing using ?. instead.
+                if (buyer.phone.isNotEmpty)
+                                ^^^^^^^^^^
+lib/screens/buyers/buyers_screen.dart:378:30: Error: The argument type 'String?' can't be assigned to the parameter type 'String' because 'String?' is nullable and 'String' isn't.
+                  Text(buyer.phone, style: GoogleFonts.rajdhani(color: AppColors.textGrey, fontSize: 14)),
+                             ^
+lib/screens/deo/deo_screen.dart:64:51: Error: The method 'loadStats' isn't defined for the class 'DashboardProvider'.
+ - 'DashboardProvider' is from 'package:ff_id_manager/providers/dashboard_provider.dart' ('lib/providers/dashboard_provider.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'loadStats'.
+                context.read<DashboardProvider>().loadStats();
+                                                  ^^^^^^^^^
+lib/screens/deo/deo_screen.dart:75:45: Error: The method 'loadStats' isn't defined for the class 'DashboardProvider'.
+ - 'DashboardProvider' is from 'package:ff_id_manager/providers/dashboard_provider.dart' ('lib/providers/dashboard_provider.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'loadStats'.
+          context.read<DashboardProvider>().loadStats();
+                                            ^^^^^^^^^
+lib/screens/deo/deo_screen.dart:243:27: Error: No named parameter with the name 'label'.
+            PrimaryButton(label: 'Create DEO Account', isLoading: _isSaving, onPressed: _save),
+                          ^^^^^
+lib/widgets/common_widgets.dart:603:9: Context: Found this candidate, but the arguments don't match.
+  const PrimaryButton({
+        ^^^^^^^^^^^^^
+lib/screens/deo/deo_screen.dart:290:20: Error: The getter 'AppHelpers' isn't defined for the class '_AddDeoAccountScreenState'.
+ - '_AddDeoAccountScreenState' is from 'package:ff_id_manager/screens/deo/deo_screen.dart' ('lib/screens/deo/deo_screen.dart').
+Try correcting the name to the name of an existing getter, or defining a getter or field named 'AppHelpers'.
+        createdAt: AppHelpers.nowColombo(),
+                   ^^^^^^^^^^
+lib/screens/deo/deo_screen.dart:387:19: Error: No named parameter with the name 'label'.
+                  label: '+ Add Payment',
+                  ^^^^^
+lib/widgets/common_widgets.dart:603:9: Context: Found this candidate, but the arguments don't match.
+  const PrimaryButton({
+        ^^^^^^^^^^^^^
+lib/screens/deo/deo_screen.dart:411:24: Error: The getter 'AppHelpers' isn't defined for the class '_DeoDetailScreenState'.
+ - '_DeoDetailScreenState' is from 'package:ff_id_manager/screens/deo/deo_screen.dart' ('lib/screens/deo/deo_screen.dart').
+Try correcting the name to the name of an existing getter, or defining a getter or field named 'AppHelpers'.
+    DateTime payDate = AppHelpers.nowColombo();
+                       ^^^^^^^^^^
+lib/screens/deo/deo_screen.dart:513:34: Error: The getter 'AppHelpers' isn't defined for the class '_DeoDetailScreenState'.
+ - '_DeoDetailScreenState' is from 'package:ff_id_manager/screens/deo/deo_screen.dart' ('lib/screens/deo/deo_screen.dart').
+Try correcting the name to the name of an existing getter, or defining a getter or field named 'AppHelpers'.
+                      createdAt: AppHelpers.nowColombo(),
+                                 ^^^^^^^^^^
+lib/screens/deo/deo_screen.dart:511:36: Error: The argument type 'DateTime' can't be assigned to the parameter type 'String'.
+ - 'DateTime' is from 'dart:core'.
+                      paymentDate: payDate,
+                                   ^
+lib/screens/deo/deo_screen.dart:515:30: Error: The method 'addPayment' isn't defined for the class 'DeoProvider'.
+ - 'DeoProvider' is from 'package:ff_id_manager/providers/deo_provider.dart' ('lib/providers/deo_provider.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'addPayment'.
+                    await dp.addPayment(payment);
+                             ^^^^^^^^^^
+lib/screens/deo/deo_screen.dart:521:55: Error: The method 'loadStats' isn't defined for the class 'DashboardProvider'.
+ - 'DashboardProvider' is from 'package:ff_id_manager/providers/dashboard_provider.dart' ('lib/providers/dashboard_provider.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'loadStats'.
+                    context.read<DashboardProvider>().loadStats();
+                                                      ^^^^^^^^^
+lib/screens/deo/deo_screen.dart:589:15: Error: The getter 'AppHelpers' isn't defined for the class '_DeoDetailScreenState'.
+ - '_DeoDetailScreenState' is from 'package:ff_id_manager/screens/deo/deo_screen.dart' ('lib/screens/deo/deo_screen.dart').
+Try correcting the name to the name of an existing getter, or defining a getter or field named 'AppHelpers'.
+              AppHelpers.openWhatsApp('', msgCtrl.text);
+              ^^^^^^^^^^
+lib/screens/reports/reports_screen.dart:41:17: Error: The getter 'AppHelpers' isn't defined for the class '_ReportsScreenState'.
+ - '_ReportsScreenState' is from 'package:ff_id_manager/screens/reports/reports_screen.dart' ('lib/screens/reports/reports_screen.dart').
+Try correcting the name to the name of an existing getter, or defining a getter or field named 'AppHelpers'.
+    final now = AppHelpers.nowColombo();
+                ^^^^^^^^^^
+Target kernel_snapshot_program failed: Exception
+
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:compileFlutterBuildDebug'.
+> Process 'command '/opt/hostedtoolcache/flutter/stable-3.24.5-x64/flutter/bin/flutter'' finished with non-zero exit value 1
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 2m 13s
+Running Gradle task 'assembleDebug'...                            135.0s
+Gradle task assembleDebug failed with exit code 1
