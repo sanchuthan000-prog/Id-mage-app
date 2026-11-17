@@ -35,11 +35,26 @@ jobs:
         run: flutter analyze --no-fatal-infos || true
 
       - name: Build APK (Debug - for testing)
-        run: flutter build apk --debug
+        run: |
+          flutter build apk --debug 2>&1 | tee build_debug.log
 
       - name: Build APK (Release)
-        run: flutter build apk --release
+        run: |
+          flutter build apk --release 2>&1 | tee build_release.log
         continue-on-error: true
+
+      - name: Save build log on failure
+        if: failure()
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git checkout -b build-logs
+          echo "=== BUILD LOG ===" > error.txt
+          tail -n 200 build_debug.log >> error.txt 2>/dev/null || true
+          tail -n 200 build_release.log >> error.txt 2>/dev/null || true
+          git add error.txt
+          git commit -m "Build error log"
+          git push -f origin build-logs
 
       - name: Get version info
         id: version
