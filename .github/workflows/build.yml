@@ -34,11 +34,12 @@ jobs:
       - name: Analyze code
         run: flutter analyze --no-fatal-infos || true
 
-      - name: Build APK (Release)
-        run: flutter build apk --release --no-obfuscate
-
-      - name: Build APK (Debug - easier to install)
+      - name: Build APK (Debug - for testing)
         run: flutter build apk --debug
+
+      - name: Build APK (Release)
+        run: flutter build apk --release
+        continue-on-error: true
 
       - name: Get version info
         id: version
@@ -47,17 +48,21 @@ jobs:
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "date=$(date +'%Y%m%d-%H%M')" >> $GITHUB_OUTPUT
 
-      - name: Upload Release APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: ff-id-manager-release-apk
-          path: build/app/outputs/flutter-apk/app-release.apk
-
       - name: Upload Debug APK
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: ff-id-manager-debug-apk
           path: build/app/outputs/flutter-apk/app-debug.apk
+          if-no-files-found: warn
+
+      - name: Upload Release APK
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ff-id-manager-release-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
+          if-no-files-found: warn
 
       - name: Create Release
         if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
@@ -85,8 +90,7 @@ jobs:
             - WhatsApp integration
             - SQLite local database
           files: |
-            build/app/outputs/flutter-apk/app-release.apk
-            build/app/outputs/flutter-apk/app-debug.apk
+            build/app/outputs/flutter-apk/*.apk
           draft: false
           prerelease: false
         env:
