@@ -168,7 +168,10 @@ class _ReportsScreenState extends State<ReportsScreen> with SingleTickerProvider
 
   Future<void> _exportPdf() async {
     final sales = context.read<SaleProvider>().sales
-        .where((s) => s.saleDate.isAfter(_startDate) && s.saleDate.isBefore(_endDate.add(const Duration(days: 1))))
+        .where((s) {
+          final dt = DateTime.tryParse(s.saleDate) ?? DateTime(2000);
+          return dt.isAfter(_startDate) && dt.isBefore(_endDate.add(const Duration(days: 1)));
+        })
         .toList();
 
     final pdf = pw.Document();
@@ -186,7 +189,7 @@ class _ReportsScreenState extends State<ReportsScreen> with SingleTickerProvider
             pw.Table.fromTextArray(
               headers: ['Date', 'FF UID', 'Buyer', 'Price', 'Profit', 'Method'],
               data: sales.map((s) => [
-                formatDate(s.saleDate), s.ffUid ?? 'ID#${s.ffIdId}',
+                formatDateString(s.saleDate), s.ffUid ?? 'ID#${s.ffIdId}',
                 s.buyerName ?? '-', 'Rs.${s.sellingPrice.toStringAsFixed(0)}',
                 'Rs.${s.profit.toStringAsFixed(0)}', s.paymentMethod
               ]).toList(),
@@ -215,8 +218,10 @@ class _SalesReport extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<SaleProvider>(builder: (ctx, sp, _) {
-      final sales = sp.sales.where((s) =>
-          !s.saleDate.isBefore(start) && !s.saleDate.isAfter(end.add(const Duration(days: 1)))).toList();
+      final sales = sp.sales.where((s) {
+        final dt = DateTime.tryParse(s.saleDate) ?? DateTime(2000);
+        return !dt.isBefore(start) && !dt.isAfter(end.add(const Duration(days: 1)));
+      }).toList();
       final totalSales = sales.fold<double>(0, (sum, s) => sum + s.sellingPrice);
       final totalProfit = sales.fold<double>(0, (sum, s) => sum + s.profit);
 
@@ -251,7 +256,7 @@ class _SalesReport extends StatelessWidget {
                               style: GoogleFonts.orbitron(color: AppColors.textWhite, fontSize: 13, fontWeight: FontWeight.w700)),
                           Text('${s.buyerName ?? '-'} • ${s.paymentMethod}',
                               style: GoogleFonts.rajdhani(color: AppColors.textGrey, fontSize: 12)),
-                          Text(formatDateTime(s.saleDate),
+                          Text(formatDateTimeString(s.saleDate),
                               style: GoogleFonts.rajdhani(color: AppColors.textGrey, fontSize: 11)),
                         ])),
                         Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
@@ -291,8 +296,10 @@ class _TransactionsReport extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<TransactionProvider>(builder: (ctx, tp, _) {
-      final txs = tp.transactions.where((t) =>
-          !t.transactionDate.isBefore(start) && !t.transactionDate.isAfter(end.add(const Duration(days: 1)))).toList();
+      final txs = tp.transactions.where((t) {
+        final dt = DateTime.tryParse(t.transactionDate) ?? DateTime(2000);
+        return !dt.isBefore(start) && !dt.isAfter(end.add(const Duration(days: 1)));
+      }).toList();
       final totalIn = txs.where((t) => t.personType == 'buyer').fold<double>(0, (s, t) => s + t.amount);
       final totalOut = txs.where((t) => t.personType == 'seller').fold<double>(0, (s, t) => s + t.amount);
 
@@ -328,7 +335,7 @@ class _TransactionsReport extends StatelessWidget {
                           Text(t.personName ?? '-', style: GoogleFonts.rajdhani(color: AppColors.textWhite, fontSize: 13, fontWeight: FontWeight.w600)),
                           Text('${t.typeDisplayName} • ${t.paymentMethod}',
                               style: GoogleFonts.rajdhani(color: AppColors.textGrey, fontSize: 11)),
-                          Text(formatDateTime(t.transactionDate),
+                          Text(formatDateTimeString(t.transactionDate),
                               style: GoogleFonts.rajdhani(color: AppColors.textGrey, fontSize: 11)),
                         ])),
                         Text(formatCurrency(t.amount),

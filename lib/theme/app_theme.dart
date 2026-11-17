@@ -45,6 +45,12 @@ class AppColors {
   static const Color textMuted = Color(0xFF607D8B);
   static const Color textDisabled = Color(0xFF455A64);
 
+  // Convenient Aliases
+  static const Color bgDark = Color(0xFF080D12);
+  static const Color cardBg = Color(0xFF111B24);
+  static const Color textWhite = Color(0xFFFFFFFF);
+  static const Color textGrey = Color(0xFF9E9E9E);
+
   // Glow Effects
   static List<BoxShadow> get neonGreenGlow => [
         BoxShadow(

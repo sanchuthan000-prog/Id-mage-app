@@ -25,39 +25,53 @@ DateTime getColomboDateTime([DateTime? dt]) {
   return utcTime.add(AppConstants.colomboUtcOffset);
 }
 
-/// Formats a DateTime into a clean date string:
+/// Formats a DateTime or date String into a clean date string:
 /// Example: "15 Nov 2026"
-String formatDate(DateTime dt) {
-  return DateFormat('dd MMM yyyy').format(dt);
+String formatDate(dynamic dt) {
+  if (dt == null) return 'N/A';
+  if (dt is DateTime) {
+    return DateFormat('dd MMM yyyy').format(dt);
+  }
+  if (dt is String) {
+    if (dt.trim().isEmpty) return 'N/A';
+    try {
+      final parsed = DateTime.parse(dt);
+      return DateFormat('dd MMM yyyy').format(parsed);
+    } catch (_) {
+      return dt;
+    }
+  }
+  return dt.toString();
 }
 
 /// Parses an ISO-8601 string or date string and formats it to "dd MMM yyyy".
 /// Returns fallback if parsing fails.
 String formatDateString(String? dateStr, {String fallback = 'N/A'}) {
-  if (dateStr == null || dateStr.trim().isEmpty) return fallback;
-  try {
-    final parsed = DateTime.parse(dateStr);
-    return formatDate(parsed);
-  } catch (_) {
-    return dateStr;
-  }
+  return formatDate(dateStr);
 }
 
-/// Formats a DateTime into a date and 12-hour time string:
+/// Formats a DateTime or date String into a date and 12-hour time string:
 /// Example: "15 Nov 2026 07:48 PM"
-String formatDateTime(DateTime dt) {
-  return DateFormat('dd MMM yyyy hh:mm a').format(dt);
+String formatDateTime(dynamic dt) {
+  if (dt == null) return 'N/A';
+  if (dt is DateTime) {
+    return DateFormat('dd MMM yyyy hh:mm a').format(dt);
+  }
+  if (dt is String) {
+    if (dt.trim().isEmpty) return 'N/A';
+    try {
+      final parsed = DateTime.parse(dt);
+      return DateFormat('dd MMM yyyy hh:mm a').format(parsed);
+    } catch (_) {
+      return dt;
+    }
+  }
+  return dt.toString();
 }
 
 /// Parses an ISO-8601 string or date string and formats it to "dd MMM yyyy hh:mm a".
 String formatDateTimeString(String? dateStr, {String fallback = 'N/A'}) {
-  if (dateStr == null || dateStr.trim().isEmpty) return fallback;
-  try {
-    final parsed = DateTime.parse(dateStr);
-    return formatDateTime(parsed);
-  } catch (_) {
-    return dateStr;
-  }
+  return formatDateTime(dateStr);
 }
 
 /// Returns the current timestamp in Asia/Colombo (Sri Lanka) formatted as:
